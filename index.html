@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIR STUDIO (SMC-PRIVATE) LIMITED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- Base Reset & Typography --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #0a0f1d;
+            --bg-secondary: #111827;
+            --bg-card: #1f2937;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #374151;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background-color: rgba(10, 15, 29, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 20px 0;
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* --- Buttons --- */
+        .btn-primary {
+            background-color: var(--accent);
+            color: #fff !important;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 180px 0 100px 0;
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.1), transparent 50%);
+            text-align: center;
+        }
+
+        .badge {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 25px auto;
+            max-width: 800px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Section Headers --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- Services Grid --- */
+        .services {
+            padding: 100px 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- Verification Table Section --- */
+        .verification {
+            padding: 100px 0;
+        }
+
+        .table-wrapper {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        .info-table th {
+            background-color: rgba(59, 130, 246, 0.08);
+            color: var(--accent);
+            padding: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .info-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .info-table td strong {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- Contact Section --- */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .contact-box {
+            max-width: 550px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-box h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 35px;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .contact-form input:focus, 
+        .contact-form textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .btn-block {
+            width: 100%;
+            padding: 14px;
+            font-size: 1rem;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            padding: 40px 0;
+            border-top: 1px solid var(--border-color);
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-content p {
+            margin-bottom: 8px;
+        }
+
+        .fbr-note {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero {
+                padding: 140px 0 70px 0;
+            }
+            .hero-actions {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .btn-secondary {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="#" class="logo">MIR STUDIO</a>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#verification">Corporate Info</a>
+                <a href="#contact" class="btn-primary">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <span class="badge">SMC-Private Limited</span>
+            <h1>Crafting Next-Gen High-Performance Digital Solutions</h1>
+            <p>We build efficient, powerful, and seamless offline-first software architectures tailored to elevate industry standards.</p>
+            <div class="hero-actions">
+                <a href="#services" class="btn-primary">Explore Our Work</a>
+                <a href="#verification" class="btn-secondary">View Credentials</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Expertise</h2>
+                <p>Delivering high-performance utility and software solutions with optimized performance.</p>
+            </div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Software Engineering</h3>
+                    <p>Designing robust, responsive architectures optimized for heavy rendering and seamless computation.</p>
+                </div>
+                <div class="card">
+                    <h3>High-Performance Core</h3>
+                    <p>Engineered for speed and efficiency, focusing on pure logical structures without unnecessary external dependencies.</p>
+                </div>
+                <div class="card">
+                    <h3>Offline-First Utility</h3>
+                    <p>Standalone software suites designed to operate seamlessly without relying on third-party APIs or external cloud layers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="verification" class="verification">
+        <div class="container">
+            <div class="section-header">
+                <h2>Corporate Registration</h2>
+                <p>Official registration credentials as verified by the Government of Pakistan / Federal Board of Revenue.</p>
+            </div>
+            
+            <div class="table-wrapper">
+                <table class="info-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Taxpayer Registration Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Company Name</strong></td>
+                            <td>MIR STUDIO (SMC-PRIVATE) LIMITED</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Registration No.</strong></td>
+                            <td>0262560</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Incorporation No.</strong></td>
+                            <td>850407378</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type of Person</strong></td>
+                            <td>Company (Single Member Private Limited)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Date of Registration</strong></td>
+                            <td>05-July-2024</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Registered Address</strong></td>
+                            <td>Service Road West G-11/2, House No. 1535, Islamabad, Pakistan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tax Office</strong></td>
+                            <td>CRO Islamabad</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Activity Type</strong></td>
+                            <td>Business</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2>Let's Connect</h2>
+                <p>Have questions about our corporate profiles or upcoming digital suites? Drop us a message.</p>
+                <form class="contact-form" onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-block">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2026 MIR STUDIO (SMC-PRIVATE) LIMITED. All Rights Reserved.</p>
+            <p class="fbr-note">Registered under Section 181C of the Income Tax Ordinance 2001.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
